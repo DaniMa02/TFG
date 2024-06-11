@@ -1,15 +1,10 @@
 import { executeSQL } from './database/insertSQL.js';
 import { initWebSocketServer } from './utils/webSocketUtils.js';
-/* import { proxmox } from './config/proxmoxConfig.js'; */
+import { proxmox } from './config/proxmoxConfig.js';
 
 
 // Inicializar el servidor WebSocket
 initWebSocketServer();
-
-// Función para ejecutar sendDataToClients cada X tiempo
-// Enviar los datos inicialmente al iniciar el backend
-
-// Configurar para que se ejecute cada 5 segundos
 
 // Función para ejecutar executeSQL cada 10 minutos
 const executeSQLPeriodically = () => {
@@ -22,7 +17,7 @@ const executeSQLPeriodically = () => {
     });
 };
 
-/* const lockVirtualMachine = async (vmid, node) => {
+const lockVirtualMachine = async (vmid, node) => {
   try {
     const theNode = proxmox.nodes.$(node);
     const options = { lock: 'clone' };
@@ -37,7 +32,7 @@ const executeSQLPeriodically = () => {
 const vmid = 107; // ID de la máquina virtual que deseas bloquear
 const node = 'pi'; // Nodo donde se encuentra la máquina virtual */
 
-/* lockVirtualMachine(vmid, node); */
+ lockVirtualMachine(vmid, node);
 
 // Ejecutar executeSQL inicialmente
 executeSQLPeriodically();
